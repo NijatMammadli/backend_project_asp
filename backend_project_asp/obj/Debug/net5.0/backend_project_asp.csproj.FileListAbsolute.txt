@@ -144,3 +144,4 @@ C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\bin
 C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Views\Course\Index.cshtml.g.cs
+C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Views\Course\Details.cshtml.g.cs
