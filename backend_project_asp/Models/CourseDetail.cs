@@ -13,7 +13,7 @@ namespace backend_project_asp.Models
         public string AboutCourse { get; set; }
         public string HowToApply { get; set; }
         public string Certification { get; set; }
-        public DateTime Starts { get; set; }
+        public DateTime Starts { get; set; } = DateTime.UtcNow; 
         public string Duration { get; set; }
         public string ClassDuration { get; set; }
         public string SkillLevel { get; set; }
