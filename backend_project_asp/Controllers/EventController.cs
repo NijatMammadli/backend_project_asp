@@ -1,5 +1,6 @@
 ﻿using FrontToBack_hw.DataAccessLayer;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,14 +16,27 @@ namespace backend_project_asp.Controllers
         {
             _dbcontext = dbcontext;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index(int page=1)
         {
-            return View();
+            ViewBag.PageCount = Decimal.Ceiling(_dbcontext.Events.Where(x=> x.IsDeleted==false).Count()/3);
+            ViewBag.Page = page;
+            var events = await _dbcontext.Events.OrderByDescending(x => x.Id).Skip((page - 1) * 3).Take(3).ToListAsync(); 
+            return View(events);
         }
 
-        public IActionResult Details()
+        public async Task<IActionResult> Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound(); 
+            }
+
+            var eventDetail = await _dbcontext.EventDetails.Include(x => x.Event).ThenInclude(x => x.EventSpeakers).ThenInclude(x => x.Speaker).FirstOrDefaultAsync(x => x.EventId == id);
+            if (eventDetail == null)
+            {
+                return NotFound(); 
+            }
+            return View(eventDetail);
         }
     }
 }
