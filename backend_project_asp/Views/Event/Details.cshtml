@@ -1,11 +1,11 @@
 ﻿
 @{
     ViewData["Title"] = "EventDetails";
-    EventDetail eventDetail = Model; 
+    EventDetail eventDetail = Model;
 }
 
 <!-- Banner Area Start -->
-<div class="banner-area-wrapper">
+@*<div class="banner-area-wrapper">
     <div class="banner-area text-center">
         <div class="container">
             <div class="row">
@@ -19,7 +19,9 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
+@await Component.InvokeAsync("Banner", "EventDetails")
+
 <!-- Banner Area End -->
 <!-- Event Details Start -->
 <div class="event-details-area blog-area pt-150 pb-140">
@@ -40,23 +42,23 @@
                             <li><span>venue : </span>@eventDetail.DetailedVenue</li>
                         </ul>
                         @Html.Raw(eventDetail.Description)
-                    <div class="speakers-area fix">
-                        <h4>speakers</h4>
-                        @foreach (var item in eventDetail.Event.EventSpeakers)
-                        {
-                            
-                            <div class="single-speaker">
-                                <div class="speaker-img">
-                                    <img src="~/img/event/@item.Speaker.Image" alt="speaker">
-                                </div>
-                                <div class="speaker-name">
-                                    <h5>@item.Speaker.Name</h5>
-                                    <p>@item.Speaker.Position, @item.Speaker.Company </p>
-                                </div>
-                            </div>
+                        <div class="speakers-area fix">
+                            <h4>speakers</h4>
+                            @foreach (var item in eventDetail.Event.EventSpeakers)
+                            {
 
-                        }
-                    </div>
+                                <div class="single-speaker">
+                                    <div class="speaker-img">
+                                        <img src="~/img/event/@item.Speaker.Image" alt="speaker">
+                                    </div>
+                                    <div class="speaker-name">
+                                        <h5>@item.Speaker.Name</h5>
+                                        <p>@item.Speaker.Position, @item.Speaker.Company </p>
+                                    </div>
+                                </div>
+
+                            }
+                        </div>
                     </div>
                     <div class="reply-area">
                         <h3>LEAVE A REPLY</h3>

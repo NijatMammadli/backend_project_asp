@@ -19,6 +19,27 @@ namespace backend_project_asp.Migrations
                 .HasAnnotation("ProductVersion", "5.0.6")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("backend_project_asp.Models.Banner", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Key")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Banners");
+                });
+
             modelBuilder.Entity("backend_project_asp.Models.Blog", b =>
                 {
                     b.Property<int>("Id")
@@ -230,6 +251,92 @@ namespace backend_project_asp.Migrations
                     b.ToTable("EventSpeakers");
                 });
 
+            modelBuilder.Entity("backend_project_asp.Models.HomeSlider", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LinkDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HomeSliders");
+                });
+
+            modelBuilder.Entity("backend_project_asp.Models.NoticeBoard", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("NoticeBoards");
+                });
+
+            modelBuilder.Entity("backend_project_asp.Models.Position", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("PositionName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Positions");
+                });
+
+            modelBuilder.Entity("backend_project_asp.Models.SocialMedia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Icon")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Link")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TeacherId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TeacherId");
+
+                    b.ToTable("SocialMedias");
+                });
+
             modelBuilder.Entity("backend_project_asp.Models.Speaker", b =>
                 {
                     b.Property<int>("Id")
@@ -255,6 +362,143 @@ namespace backend_project_asp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Speakers");
+                });
+
+            modelBuilder.Entity("backend_project_asp.Models.Teacher", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PositionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PositionId");
+
+                    b.ToTable("Teachers");
+                });
+
+            modelBuilder.Entity("backend_project_asp.Models.TeacherDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AboutMe")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Communication")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Degree")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Design")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Development")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Experience")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Faculty")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Hobbies")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Innovation")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Language")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Mail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Skype")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TeacherId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TeamLeader")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TeacherId")
+                        .IsUnique();
+
+                    b.ToTable("TeacherDetails");
+                });
+
+            modelBuilder.Entity("backend_project_asp.Models.TestiMonial", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Position")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TestiMonials");
+                });
+
+            modelBuilder.Entity("backend_project_asp.Models.WelcomeArea", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Header")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LinkDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WelcomeAreas");
                 });
 
             modelBuilder.Entity("backend_project_asp.Models.BlogDetail", b =>
@@ -309,6 +553,39 @@ namespace backend_project_asp.Migrations
                     b.Navigation("Speaker");
                 });
 
+            modelBuilder.Entity("backend_project_asp.Models.SocialMedia", b =>
+                {
+                    b.HasOne("backend_project_asp.Models.Teacher", "Teacher")
+                        .WithMany("socialMedias")
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("backend_project_asp.Models.Teacher", b =>
+                {
+                    b.HasOne("backend_project_asp.Models.Position", "Position")
+                        .WithMany("Teachers")
+                        .HasForeignKey("PositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Position");
+                });
+
+            modelBuilder.Entity("backend_project_asp.Models.TeacherDetail", b =>
+                {
+                    b.HasOne("backend_project_asp.Models.Teacher", "Teacher")
+                        .WithOne("TecaherDetail")
+                        .HasForeignKey("backend_project_asp.Models.TeacherDetail", "TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Teacher");
+                });
+
             modelBuilder.Entity("backend_project_asp.Models.Blog", b =>
                 {
                     b.Navigation("BlogDetail");
@@ -326,9 +603,21 @@ namespace backend_project_asp.Migrations
                     b.Navigation("EventSpeakers");
                 });
 
+            modelBuilder.Entity("backend_project_asp.Models.Position", b =>
+                {
+                    b.Navigation("Teachers");
+                });
+
             modelBuilder.Entity("backend_project_asp.Models.Speaker", b =>
                 {
                     b.Navigation("EventSpeakers");
+                });
+
+            modelBuilder.Entity("backend_project_asp.Models.Teacher", b =>
+                {
+                    b.Navigation("socialMedias");
+
+                    b.Navigation("TecaherDetail");
                 });
 #pragma warning restore 612, 618
         }

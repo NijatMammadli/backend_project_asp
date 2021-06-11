@@ -25,6 +25,17 @@ namespace FrontToBack_hw.DataAccessLayer
 
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<BlogDetail> BlogDetails { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<TeacherDetail> TeacherDetails { get; set; }
+        public DbSet<SocialMedia> SocialMedias { get; set; }
+        public DbSet<Position> Positions { get; set; }
+        public DbSet<NoticeBoard> NoticeBoards { get; set; }
+        public DbSet<Banner> Banners { get; set; }
+        public DbSet<TestiMonial> TestiMonials { get; set; }
+        public DbSet<WelcomeArea> WelcomeAreas { get; set; }
+        public DbSet<HomeSlider> HomeSliders { get; set; }
+
+        
 
 
     }

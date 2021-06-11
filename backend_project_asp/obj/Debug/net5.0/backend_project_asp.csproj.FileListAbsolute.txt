@@ -9,7 +9,6 @@ C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\bin
 C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\bin\Debug\net5.0\backend_project_asp.pdb
 C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\bin\Debug\net5.0\backend_project_asp.Views.dll
 C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\bin\Debug\net5.0\backend_project_asp.Views.pdb
-C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\backend_project_asp.csprojAssemblyReference.cache
 C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\backend_project_asp.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\backend_project_asp.AssemblyInfoInputs.cache
 C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\backend_project_asp.AssemblyInfo.cs
@@ -151,3 +150,12 @@ C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj
 C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Views\Blog\Details.cshtml.g.cs
 C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Views\Teacher\Index.cshtml.g.cs
 C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Views\Teacher\Details.cshtml.g.cs
+C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Views\Shared\Components\NoticeBoard\Default.cshtml.g.cs
+C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Views\Shared\Components\Banner\Default.cshtml.g.cs
+C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Views\About\Index.cshtml.g.cs
+C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Views\Shared\Components\TestiMonial\Default.cshtml.g.cs
+C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Views\Shared\Components\WelComeArea\Default.cshtml.g.cs
+C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Views\Shared\Components\Teacher\Default.cshtml.g.cs
+C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Views\Shared\Components\Blog\Default.cshtml.g.cs
+C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Views\Shared\Components\Event\Default.cshtml.g.cs
+C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Views\Shared\Components\Course\Default.cshtml.g.cs

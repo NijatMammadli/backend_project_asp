@@ -19,14 +19,14 @@ namespace backend_project_asp.Controllers
             _dbcontext = dbcontext;
         }
 
-        public async Task<IActionResult> Index(int page=1)
+        public  IActionResult Index(int page=1)
         {
             ViewBag.PageCount = Decimal.Ceiling(_dbcontext.Courses.Where(x=>x.IsDeleted==false).Count()/3);
             ViewBag.Page = page; 
-            List<Course> courses = await _dbcontext.Courses.OrderByDescending(x=>x.Id).Skip((page-1)*3).Take(3).ToListAsync();
+            
             
 
-            return View(courses);
+            return View();
         }
 
 

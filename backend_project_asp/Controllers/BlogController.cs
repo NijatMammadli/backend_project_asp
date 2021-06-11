@@ -16,12 +16,12 @@ namespace backend_project_asp.Controllers
         {
             _dbcontext = dbcontext;
         }
-        public async Task<IActionResult> Index(int page=1)
+        public  IActionResult Index(int page=1)
         {
-            ViewBag.PageCount = Decimal.Ceiling(_dbcontext.Blogs.Where(x => x.IsDeleted == false).Count() / 3);
+            ViewBag.PageCount = Math.Ceiling((decimal)_dbcontext.Blogs.Where(x => x.IsDeleted == false).Count() / 3);
             ViewBag.Page = page;
-            var blogs = await _dbcontext.Blogs.OrderByDescending(x => x.Id).Skip((page-1)*3).Take(3).ToListAsync(); 
-            return View(blogs);
+            
+            return View();
         }
 
         public async Task<IActionResult> Details(int? id)

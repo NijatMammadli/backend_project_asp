@@ -1,0 +1,69 @@
+﻿
+@{
+    List<NoticeBoard> noticeBoards = Model;
+    var x = 1; 
+}
+
+<section class="notice-area two pt-140">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="notice-right-wrapper mb-25 pb-25">
+                    <h3>TAKE A VIDEO TOUR</h3>
+                    <div class="notice-video">
+                        <div class="video-icon video-hover">
+                            <a class="video-popup" href="https://www.youtube.com/watch?v=to6Ghf8UL7o">
+                                <i class="zmdi zmdi-play"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="notice-left-wrapper">
+                    <h3>notice board</h3>
+                    <div class="notice-left">
+                          
+                            @foreach (var item in noticeBoards)
+                            {
+
+                                if (x == 1 || x % 4 == 0)
+                                {
+                                <div class="single-notice-left mb-23 pb-20">
+                                    <h4>@item.Date.ToString("dd, MMMM yyyy")</h4>
+                                    <p>@item.Description </p>
+                                </div>
+                                }
+                                else if (x == 2 || x % 2 == 0)
+                                {
+                    <div class="single-notice-left hidden-sm mb-23 pb-20">
+                        <h4>@item.Date.ToString("dd, MMMM yyyy")</h4>
+                        <p>@item.Description </p>
+                    </div>
+
+                                }
+                                else if (x == 3 || x % 3 == 0)
+                                {
+                    <div class="single-notice-left pb-70">
+                        <h4>@item.Date.ToString("dd, MMMM yyyy")</h4>
+                        <p>@item.Description </p>
+                    </div>
+                                   
+                    
+                                }
+
+
+@if (x == noticeBoards.Count)
+{
+    x = 1; 
+}
+                            }
+                        
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

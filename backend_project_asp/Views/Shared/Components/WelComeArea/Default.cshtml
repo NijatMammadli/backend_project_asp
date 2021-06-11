@@ -1,0 +1,23 @@
+﻿
+@{
+    WelcomeArea welcomeArea = Model;
+}
+
+<div class="about-area pb-155">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="about-content">
+                    @Html.Raw(welcomeArea.Header)
+                    @Html.Raw(welcomeArea.Description)
+                    <a class="default-btn" asp-controller="Course" asp-action="Index" >@welcomeArea.LinkDescription</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="about-img">
+                    <img src="img/about/@welcomeArea.Image" alt="about">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

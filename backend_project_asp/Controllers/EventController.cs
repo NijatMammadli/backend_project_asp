@@ -20,8 +20,8 @@ namespace backend_project_asp.Controllers
         {
             ViewBag.PageCount = Decimal.Ceiling(_dbcontext.Events.Where(x=> x.IsDeleted==false).Count()/3);
             ViewBag.Page = page;
-            var events = await _dbcontext.Events.OrderByDescending(x => x.Id).Skip((page - 1) * 3).Take(3).ToListAsync(); 
-            return View(events);
+            
+            return View();
         }
 
         public async Task<IActionResult> Details(int? id)

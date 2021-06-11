@@ -1,11 +1,11 @@
 ﻿
 @{
     ViewData["Title"] = "Courses";
-    List<Course> courses = Model; 
+    List<Course> courses = Model;
 }
 
 <!-- Banner Area Start -->
-<div class="banner-area-wrapper">
+@*<div class="banner-area-wrapper">
     <div class="banner-area text-center">
         <div class="container">
             <div class="row">
@@ -19,7 +19,9 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
+@await Component.InvokeAsync("Banner", "Courses")
+
 <!-- Banner Area End -->
 <!-- Course Start -->
 <div class="course-area pt-150 pb-150">
@@ -38,27 +40,7 @@
             </div>
         </div>
         <div class="row">
-            @foreach (var course in courses)
-            {
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="single-course mb-70">
-                        <div class="course-img">
-                            <a asp-action="Details" asp-route-id="@course.Id">
-                                <img src="~/img/course/@course.Image" alt="course">
-                                <div class="course-hover">
-                                    <i class="fa fa-link"></i>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="course-content">
-                            <h3><a asp-action="Details" asp-route-id="@course.Id">@Html.Raw(course.Name)</a></h3>
-                            <p>@Html.Raw(course.Description)</p>
-                            <a class="default-btn" asp-action="Details" asp-route-id="@course.Id">read more</a>
-                        </div>
-                    </div>
-                </div>
-
-            }
+         @await Component.InvokeAsync("Course", new {count=3, page=ViewBag.Page}) 
 
         </div>
         <div class="row">
