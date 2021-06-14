@@ -67,6 +67,8 @@ namespace backend_project_asp
 
             app.UseAuthorization();
 
+            app.UseAuthentication(); 
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

@@ -13,10 +13,14 @@ namespace backend_project_asp.Controllers
     public class AccountController : Controller
     {
         private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
 
-        public AccountController(UserManager<User> userManager)
+      
+
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         public IActionResult Login()
@@ -70,9 +74,17 @@ namespace backend_project_asp.Controllers
             }
 
 
-            return RedirectToAction("Login"); 
+            await _signInManager.SignInAsync(newUser, true);
+
+            return RedirectToAction("Index", "Home"); 
 
 
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
