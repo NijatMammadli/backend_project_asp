@@ -1,4 +1,5 @@
-﻿using backend_project_asp.Models;
+﻿using backend_project_asp.Data;
+using backend_project_asp.Models;
 using backend_project_asp.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -109,7 +110,7 @@ namespace backend_project_asp.Controllers
 
             }
 
-
+            await _userManager.AddToRoleAsync(newUser, RoleConstants.UserRole);
             await _signInManager.SignInAsync(newUser, true);
 
             return RedirectToAction("Index", "Home"); 

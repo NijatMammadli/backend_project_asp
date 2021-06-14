@@ -1,3 +1,4 @@
+using backend_project_asp.DataAccessLayer;
 using backend_project_asp.Models;
 using FrontToBack_hw.DataAccessLayer;
 using Microsoft.AspNetCore.Builder;
@@ -41,14 +42,17 @@ namespace backend_project_asp
 
             services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseSqlServer(connectionString);
+                options.UseSqlServer(connectionString, builder =>
+                {
+                    builder.MigrationsAssembly(nameof(backend_project_asp));
+                });
             });
 
             services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)    
         {
             if (env.IsDevelopment())
             {
@@ -67,7 +71,9 @@ namespace backend_project_asp
 
             app.UseAuthorization();
 
-            app.UseAuthentication(); 
+            app.UseAuthentication();
+
+            app.UseAuthorization(); 
 
             app.UseEndpoints(endpoints =>
             {
@@ -75,6 +81,8 @@ namespace backend_project_asp
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+         
         }
     }
 }
