@@ -26,8 +26,15 @@ using backend_project_asp.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\Views\_ViewImports.cshtml"
+using backend_project_asp.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"552bfbd89aa1f90f3bd836fd9dd5de593f6f40f2", @"/Views/Blog/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f839417627222b111cbb620f30b73c9e8aed1036", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9af22fe791b9f4b64de105a8ab88a5a347a515cb", @"/Views/_ViewImports.cshtml")]
     public class Views_Blog_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("page-link"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -103,7 +110,7 @@ Write(await Component.InvokeAsync("Banner", "Blog"));
 #line hidden
 #nullable disable
             WriteLiteral("                        <li class=\"page-item disabled\">\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "552bfbd89aa1f90f3bd836fd9dd5de593f6f40f28208", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "552bfbd89aa1f90f3bd836fd9dd5de593f6f40f28430", async() => {
 #nullable restore
 #line 26 "C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\Views\Blog\Index.cshtml"
                                                                                                  Write(i);
@@ -152,7 +159,7 @@ Write(await Component.InvokeAsync("Banner", "Blog"));
 #line hidden
 #nullable disable
             WriteLiteral("                        <li class=\"page-item \">\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "552bfbd89aa1f90f3bd836fd9dd5de593f6f40f211227", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "552bfbd89aa1f90f3bd836fd9dd5de593f6f40f211449", async() => {
 #nullable restore
 #line 32 "C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\Views\Blog\Index.cshtml"
                                                                                                  Write(i);
@@ -219,7 +226,7 @@ Write(await Component.InvokeAsync("Banner", "Blog"));
                 </div>
                 <div class=""newsletter-form mc_embed_signup"">
                     ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "552bfbd89aa1f90f3bd836fd9dd5de593f6f40f214722", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "552bfbd89aa1f90f3bd836fd9dd5de593f6f40f214944", async() => {
                 WriteLiteral("\r\n                        <div id=\"mc_embed_signup_scroll\" class=\"mc-form\">\r\n                            <input type=\"email\"");
                 BeginWriteAttribute("value", " value=\"", 2067, "\"", 2075, 0);
                 EndWriteAttribute();

@@ -26,8 +26,15 @@ using backend_project_asp.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\Views\_ViewImports.cshtml"
+using backend_project_asp.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"57f7cc1e2dad5506c5f7ff3fada02d27f3e03f2a", @"/Views/Shared/Components/Blog/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f839417627222b111cbb620f30b73c9e8aed1036", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9af22fe791b9f4b64de105a8ab88a5a347a515cb", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Components_Blog_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Details", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -74,7 +81,7 @@ using backend_project_asp.Models;
 #line hidden
 #nullable disable
             WriteLiteral("    <div class=\"col-md-4 col-sm-6 col-xs-12\">\r\n        <div class=\"single-blog mb-60\">\r\n            <div class=\"blog-img\">\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "57f7cc1e2dad5506c5f7ff3fada02d27f3e03f2a4238", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "57f7cc1e2dad5506c5f7ff3fada02d27f3e03f2a4460", async() => {
                 WriteLiteral("<img");
                 BeginWriteAttribute("src", " src=\"", 267, "\"", 293, 2);
                 WriteAttributeValue("", 273, "img/blog/", 273, 9, true);
@@ -140,7 +147,7 @@ WriteAttributeValue("", 282, blog.Image, 282, 11, false);
 #line hidden
 #nullable disable
             WriteLiteral("</p>\r\n                </div>\r\n                <div class=\"blog-bottom\">\r\n                    <h2>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "57f7cc1e2dad5506c5f7ff3fada02d27f3e03f2a8287", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "57f7cc1e2dad5506c5f7ff3fada02d27f3e03f2a8509", async() => {
 #nullable restore
 #line 21 "C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\Views\Shared\Components\Blog\Default.cshtml"
                                                                    Write(blog.Name);
@@ -178,7 +185,7 @@ WriteAttributeValue("", 282, blog.Image, 282, 11, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</h2>\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "57f7cc1e2dad5506c5f7ff3fada02d27f3e03f2a10796", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "57f7cc1e2dad5506c5f7ff3fada02d27f3e03f2a11018", async() => {
                 WriteLiteral("read more");
             }
             );
