@@ -166,4 +166,3 @@ C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\bin
 C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Views\Account\SignUp.cshtml.g.cs
-C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\backend_project_asp.csprojAssemblyReference.cache

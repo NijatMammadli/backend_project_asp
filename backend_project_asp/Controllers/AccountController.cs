@@ -28,6 +28,42 @@ namespace backend_project_asp.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> Login(LoginViewModel login)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var isExistUser = await _userManager.FindByEmailAsync(login.Email); 
+            if(isExistUser == null)
+            {
+                ModelState.AddModelError("", "Email or password is invalid");
+                return View();
+            }
+
+
+            var loginResult = await _signInManager.PasswordSignInAsync(isExistUser, login.Password, true, true);
+
+            if (loginResult.IsLockedOut)
+            {
+                ModelState.AddModelError("", "LockedOut");
+                return View();
+            }
+
+            if (!loginResult.Succeeded)
+            {
+                ModelState.AddModelError("", "Email or password is invalid");
+                return View();
+            }
+
+
+            return RedirectToAction("Index", "Home"); 
+        }
+
         public IActionResult SignUp()
         {
             return View(); 
