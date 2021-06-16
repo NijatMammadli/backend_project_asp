@@ -11,6 +11,7 @@ namespace backend_project_asp.Models
         public int Id { get; set; }
         public string Description { get; set; }
         public string DetailedVenue { get; set; }
+        public bool IsDeleted { get; set; } = false;
 
         [ForeignKey("Event")]
 

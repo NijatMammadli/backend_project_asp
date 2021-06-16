@@ -1,0 +1,66 @@
+﻿@model Blog
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create Blog</h4>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="Name">Name</label>
+                        <input asp-for="Name" class="form-control" placeholder="Name">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Author">Author</label>
+                        <textarea asp-for="Author" class="form-control" placeholder="Author" row="3"></textarea>
+                        <span asp-validation-for="Author" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="BlogDetail.Description"></label>
+                        <input asp-for="BlogDetail.Description" class="form-control">
+                        <span asp-validation-for="BlogDetail.Description" class="text-danger"></span>
+                    </div>
+              
+                    <div class="form-group">
+                        <label asp-for="Date"></label>
+                        <input asp-for="Date" class="form-control">
+                        <span asp-validation-for="Date" class="text-danger"></span>
+                    </div>
+
+
+
+
+
+
+                    <div class="form-group " id="photoInput">
+                        <label asp-for="Photo">Images</label>
+                        <input asp-for="Photo" class="form-control" accept="image/*" />
+                        <span asp-validation-for="Photo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" id="CategoryInput">
+                        <label>category</label>
+                        <select multiple class="form-control" name="categoryId" id="Category">
+
+                            @foreach (Category item in ViewBag.categories)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+
+
+
+                    <button type="submit" class="btn btn-primary mr-2">Create</button>
+                    <a asp-action="Index" class="btn btn-light">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

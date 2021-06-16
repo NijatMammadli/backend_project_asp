@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -22,5 +23,10 @@ namespace backend_project_asp.Models
         public DateTime Date { get; set; } = DateTime.UtcNow; 
         public bool IsDeleted { get; set; }
         public BlogDetail BlogDetail { get; set; }
+        public ICollection<BlogCategory> BlogCategories { get; set; }
+
+        [NotMapped]
+        public IFormFile Photo { get; set; }
+
     }
 }

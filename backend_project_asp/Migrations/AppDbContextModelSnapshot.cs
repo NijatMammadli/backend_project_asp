@@ -202,6 +202,28 @@ namespace backend_project_asp.Migrations
                     b.ToTable("Blogs");
                 });
 
+            modelBuilder.Entity("backend_project_asp.Models.BlogCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BlogId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BlogId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("BlogCategories");
+                });
+
             modelBuilder.Entity("backend_project_asp.Models.BlogDetail", b =>
                 {
                     b.Property<int>("Id")
@@ -218,12 +240,31 @@ namespace backend_project_asp.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BlogId")
                         .IsUnique();
 
                     b.ToTable("BlogDetails");
+                });
+
+            modelBuilder.Entity("backend_project_asp.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("backend_project_asp.Models.Course", b =>
@@ -249,6 +290,28 @@ namespace backend_project_asp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Courses");
+                });
+
+            modelBuilder.Entity("backend_project_asp.Models.CourseCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("CourseId");
+
+                    b.ToTable("CourseCategories");
                 });
 
             modelBuilder.Entity("backend_project_asp.Models.CourseDetail", b =>
@@ -281,6 +344,9 @@ namespace backend_project_asp.Migrations
 
                     b.Property<string>("HowToApply")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Language")
                         .HasColumnType("nvarchar(max)");
@@ -336,6 +402,28 @@ namespace backend_project_asp.Migrations
                     b.ToTable("Events");
                 });
 
+            modelBuilder.Entity("backend_project_asp.Models.EventCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("EventId");
+
+                    b.ToTable("EventCategories");
+                });
+
             modelBuilder.Entity("backend_project_asp.Models.EventDetail", b =>
                 {
                     b.Property<int>("Id")
@@ -351,6 +439,9 @@ namespace backend_project_asp.Migrations
 
                     b.Property<int>("EventId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -493,6 +584,24 @@ namespace backend_project_asp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Speakers");
+                });
+
+            modelBuilder.Entity("backend_project_asp.Models.Subscribe", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Subscribes");
                 });
 
             modelBuilder.Entity("backend_project_asp.Models.Teacher", b =>
@@ -752,6 +861,25 @@ namespace backend_project_asp.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("backend_project_asp.Models.BlogCategory", b =>
+                {
+                    b.HasOne("backend_project_asp.Models.Blog", "Blog")
+                        .WithMany("BlogCategories")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("backend_project_asp.Models.Category", "Category")
+                        .WithMany("BlogCategories")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Blog");
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("backend_project_asp.Models.BlogDetail", b =>
                 {
                     b.HasOne("backend_project_asp.Models.Blog", "Blog")
@@ -763,6 +891,25 @@ namespace backend_project_asp.Migrations
                     b.Navigation("Blog");
                 });
 
+            modelBuilder.Entity("backend_project_asp.Models.CourseCategory", b =>
+                {
+                    b.HasOne("backend_project_asp.Models.Category", "Category")
+                        .WithMany("CourseCategories")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("backend_project_asp.Models.Course", "Course")
+                        .WithMany("CourseCategories")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Course");
+                });
+
             modelBuilder.Entity("backend_project_asp.Models.CourseDetail", b =>
                 {
                     b.HasOne("backend_project_asp.Models.Course", "Course")
@@ -772,6 +919,25 @@ namespace backend_project_asp.Migrations
                         .IsRequired();
 
                     b.Navigation("Course");
+                });
+
+            modelBuilder.Entity("backend_project_asp.Models.EventCategory", b =>
+                {
+                    b.HasOne("backend_project_asp.Models.Category", "Category")
+                        .WithMany("EventCategories")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("backend_project_asp.Models.Event", "Event")
+                        .WithMany("EventCategories")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Event");
                 });
 
             modelBuilder.Entity("backend_project_asp.Models.EventDetail", b =>
@@ -839,16 +1005,31 @@ namespace backend_project_asp.Migrations
 
             modelBuilder.Entity("backend_project_asp.Models.Blog", b =>
                 {
+                    b.Navigation("BlogCategories");
+
                     b.Navigation("BlogDetail");
+                });
+
+            modelBuilder.Entity("backend_project_asp.Models.Category", b =>
+                {
+                    b.Navigation("BlogCategories");
+
+                    b.Navigation("CourseCategories");
+
+                    b.Navigation("EventCategories");
                 });
 
             modelBuilder.Entity("backend_project_asp.Models.Course", b =>
                 {
+                    b.Navigation("CourseCategories");
+
                     b.Navigation("CourseDetail");
                 });
 
             modelBuilder.Entity("backend_project_asp.Models.Event", b =>
                 {
+                    b.Navigation("EventCategories");
+
                     b.Navigation("EventDetail");
 
                     b.Navigation("EventSpeakers");

@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    List<Blog> blogs = Model;
+}
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Courses</h4>
+                <a asp-controller="Blog" asp-action="Create"> Create Blog</a>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Author</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var blog in blogs)
+                            {
+                                <tr>
+                                    <td><img width="150" height="150" src="~/img/blog/@blog.Image" /></td>
+                                    <td>@blog.Name</td>
+                                    <td>@blog.Author</td>
+                                    <td>@blog.Date.ToString("dd MMMM yyyy")</td>
+                                    <td>
+                                        <a asp-action="Details" asp-route-id="@blog.Id" class="btn btn-success">Detail</a>
+                                        <a asp-action="Update" asp-route-id="@blog.Id" class="btn btn-warning">Update</a>
+                                        <a asp-action="Delete" asp-route-id="@blog.Id" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

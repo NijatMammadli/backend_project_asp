@@ -1,0 +1,34 @@
+﻿@model Blog
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="blog-details-area pt-150 pb-140">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="blog-details">
+                    <div class="blog-details-img">
+                        <img src="~/img/blog/@Model.Image" alt="blog-details">
+                    </div>
+                    <div class="blog-details-content">
+                        <h2>@Model.Name </h2>
+                        <h6>@Model.Author  / @Model.Date.ToString("MMMM dd, yyyy") </h6>
+                        @Html.Raw(Model.BlogDetail.Description)
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <a asp-action="Index" class="btn btn-primary">Go Back</a>
+    <form method="post">
+        <button type="submit" class="btn btn-danger mr-2">Delete</button>
+    </form>
+</div>

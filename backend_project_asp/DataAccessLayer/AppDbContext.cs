@@ -23,7 +23,11 @@ namespace FrontToBack_hw.DataAccessLayer
         public DbSet<EventDetail> EventDetails { get; set; }
 
         public DbSet<Speaker> Speakers { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public DbSet<EventSpeaker> EventSpeakers { get; set; }
+        public DbSet<CourseCategory> CourseCategories { get; set; }
+        public DbSet<BlogCategory> BlogCategories { get; set; }
+        public DbSet<EventCategory> EventCategories { get; set; }
 
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<BlogDetail> BlogDetails { get; set; }
@@ -36,6 +40,7 @@ namespace FrontToBack_hw.DataAccessLayer
         public DbSet<TestiMonial> TestiMonials { get; set; }
         public DbSet<WelcomeArea> WelcomeAreas { get; set; }
         public DbSet<HomeSlider> HomeSliders { get; set; }
+        public DbSet<Subscribe> Subscribes { get; set; }
 
         
 

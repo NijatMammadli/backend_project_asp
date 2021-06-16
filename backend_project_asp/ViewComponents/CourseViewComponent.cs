@@ -20,6 +20,9 @@ namespace backend_project_asp.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync(int count, int? page)
         {
+          
+           
+
             if (page == null)
             {
                 var courses = await _dbContext.Courses.OrderByDescending(x => x.Id).Take(count).ToListAsync();

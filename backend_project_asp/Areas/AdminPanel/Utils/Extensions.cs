@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace P316Practise.Areas.AdminPanel.Utils
+namespace backend_project_asp.Areas.AdminPanel.Utils
 {
     public static class Extensions
     {

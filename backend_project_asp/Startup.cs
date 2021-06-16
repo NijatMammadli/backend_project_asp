@@ -1,3 +1,4 @@
+using backend_project_asp.Areas.AdminPanel.Utils;
 using backend_project_asp.DataAccessLayer;
 using backend_project_asp.Models;
 using FrontToBack_hw.DataAccessLayer;
@@ -9,15 +10,19 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using System.IO;
 
 namespace backend_project_asp
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
+            _environment = environment;
         }
+
+        private readonly IWebHostEnvironment _environment;
 
         public IConfiguration Configuration { get; }
 
@@ -49,6 +54,8 @@ namespace backend_project_asp
             });
 
             services.AddControllersWithViews();
+            Constants.ImageFolderPath = Path.Combine(_environment.WebRootPath,  "img");
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

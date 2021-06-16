@@ -1,5 +1,6 @@
 ﻿
 using backend_project_asp.Models;
+using backend_project_asp.ViewModels;
 using FrontToBack_hw.DataAccessLayer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,14 +20,26 @@ namespace backend_project_asp.Controllers
             _dbcontext = dbcontext;
         }
 
-        public  IActionResult Index(int page=1)
+        public  IActionResult Index(int? categoryId,int page=1)
         {
-            ViewBag.PageCount = Decimal.Ceiling(_dbcontext.Courses.Where(x=>x.IsDeleted==false).Count()/3);
-            ViewBag.Page = page; 
-            
-            
+            if (categoryId == null)
+            {
+                ViewBag.PageCount = Decimal.Ceiling(_dbcontext.Courses.Where(x => x.IsDeleted == false).Count() / 3);
+                ViewBag.Page = page;
+                return View();
 
-            return View();
+            }
+            else
+            {
+                List<Course> courses = new List<Course>();
+                IQueryable<CourseCategory> courseCategories = _dbcontext.CourseCategories.Where(x => x.CategoryId == categoryId).Include(x => x.Course);
+                foreach (CourseCategory ct in courseCategories)
+                {
+                    courses.Add(ct.Course);
+                }
+                return View(courses);
+
+            }
         }
 
 
@@ -38,6 +51,8 @@ namespace backend_project_asp.Controllers
                 return NotFound(); 
             }
 
+            
+
             var courseDetail = await _dbcontext.CourseDetails.Include(x => x.Course).FirstOrDefaultAsync(x => x.CourseId == id);
 
             if (courseDetail == null)
@@ -45,7 +60,15 @@ namespace backend_project_asp.Controllers
                 return NotFound(); 
             }
 
-            return View(courseDetail); 
+            var categories = await _dbcontext.Categories.Include(x => x.CourseCategories).ToListAsync();
+
+            var courseViewModel = new CourseViewModel
+            {
+                CourseDetail = courseDetail,
+                Categories = categories
+            };
+
+            return View(courseViewModel); 
         }
 
     }

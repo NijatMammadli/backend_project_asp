@@ -20,5 +20,7 @@ namespace backend_project_asp.Models
 
         public EventDetail EventDetail { get; set; }
         public ICollection<EventSpeaker> EventSpeakers { get; set; }
+        public ICollection<EventCategory> EventCategories { get; set; }
+
     }
 }
