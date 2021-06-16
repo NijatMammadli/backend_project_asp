@@ -41,6 +41,7 @@ namespace FrontToBack_hw.DataAccessLayer
         public DbSet<WelcomeArea> WelcomeAreas { get; set; }
         public DbSet<HomeSlider> HomeSliders { get; set; }
         public DbSet<Subscribe> Subscribes { get; set; }
+        public DbSet<AllSocialMedia> AllSocialMedias { get; set; }
 
         
 

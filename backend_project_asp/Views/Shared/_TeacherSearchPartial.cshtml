@@ -19,7 +19,7 @@
                 <ul>
                     @foreach (var item in teacher.socialMedias)
                     {
-                        <li><a href="@item.Link"><i class="@item.Icon"></i></a></li>
+                        <li><a href="@item.Link">@Html.Raw(item.Icon)</a></li>
 
                     }
 
