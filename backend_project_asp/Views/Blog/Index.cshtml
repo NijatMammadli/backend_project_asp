@@ -13,6 +13,19 @@
 <div class="blog-area pt-150 pb-150">
     <div class="container">
         <div class="row">
+            <div class="col-xs-12">
+                <div class="course-title">
+                    <h3>search blogs</h3>
+                </div>
+                <div class="course-form">
+                    <form id="search" action="#">
+                        <input id="search-Blog" type="search" placeholder="Search..." name="search" />
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="Old-Blog">
+
             @if (blogs.Count == 0)
             {
                 @await Component.InvokeAsync("Blog", new { count = 3, page = ViewBag.Page })
@@ -44,9 +57,16 @@
                 }
             }
         </div>
+
+        <div class="row" id="New-Blog">
+
+
+        </div>
+
+
         @if (blogs.Count() == 0)
         {
-            <div class="row">
+            <div class="row" id="pagination">
                 <ul class="pagination pagination-lg">
                     @for (int i = 1; i <= ViewBag.PageCount; i++)
                     {

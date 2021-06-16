@@ -30,32 +30,45 @@
 <div class="teacher-area pt-150 pb-105">
     <div class="container">
         <div class="row">
+            <div class="col-xs-12">
+                <div class="course-title">
+                    <h3>search teachers</h3>
+                </div>
+                <div class="course-form">
+                    <form id="search" action="#">
+                        <input id="search-Teacher" type="search" placeholder="Search..." name="search" />
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="Old-Teacher">
             @await Component.InvokeAsync("Teacher", new { count = 4, page = ViewBag.Page })
 
         </div>
-<div class="row">
-    <ul class="pagination pagination-lg">
-        @for (int i = 1; i <= ViewBag.PageCount; i++)
-        {
-            if (ViewBag.Page == i)
-            {
-                <li class="page-item disabled">
-                    <a class="page-link" asp-action="Index" asp-route-page="@i">@i</a>
-                </li>
-            }
-            else
-            {
-                <li class="page-item ">
-                    <a class="page-link" asp-action="Index" asp-route-page="@i">@i</a>
-                </li>
-            }
+        <div class="row" id="New-Teacher"></div>
+        <div class="row">
+            <ul class="pagination pagination-lg">
+                @for (int i = 1; i <= ViewBag.PageCount; i++)
+                {
+                    if (ViewBag.Page == i)
+                    {
+                        <li class="page-item disabled">
+                            <a class="page-link" asp-action="Index" asp-route-page="@i">@i</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item ">
+                            <a class="page-link" asp-action="Index" asp-route-page="@i">@i</a>
+                        </li>
+                    }
 
-        }
+                }
 
 
-    </ul>
+            </ul>
 
-</div>
+        </div>
 
     </div>
 </div>

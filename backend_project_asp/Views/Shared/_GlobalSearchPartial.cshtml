@@ -1,0 +1,64 @@
+﻿@model GlobalSearchViewModel
+
+<div id="global-list" style="height:300px; overflow:scroll; background-color:white !important">
+    <div>Search of Courses</div>
+    @if (Model.Courses.Count == 0)
+    {
+
+
+        <div> result of Courses not found</div>
+    }
+    else
+    {
+        foreach (var item in Model.Courses)
+        {
+            <div><a asp-controller="Course" asp-action="Details" asp-route-id="@item.Id">@item.Name</a></div>
+        }
+    }
+    <div>---------------</div>
+    <div>Search of Blogs</div>
+    @if (Model.Blogs.Count == 0)
+    {
+
+
+        <div> result of Courses not found</div>
+    }
+    else
+    {
+        foreach (var item in Model.Blogs)
+        {
+            <div><a asp-controller="Blog" asp-action="Details" asp-route-id="@item.Id">@item.Name</a></div>
+        }
+    }
+    <div>---------------</div>
+    <div>Search of Teachers</div>
+    @if (Model.Teachers.Count == 0)
+    {
+
+
+        <div> result of Teachers not found</div>
+    }
+    else
+    {
+        foreach (var item in Model.Teachers)
+        {
+            <div><a asp-controller="Teacher" asp-action="Details" asp-route-id="@item.Id">@item.Name</a></div>
+        }
+    }
+    <div>---------------</div>
+    <div>Search of Events</div>
+    @if (Model.Events.Count == 0)
+    {
+
+
+        <div> result of Events not found</div>
+    }
+    else
+    {
+        foreach (var item in Model.Events)
+        {
+            <div><a asp-controller="Event" asp-action="Details" asp-route-id="@item.Id">@item.Name</a></div>
+        }
+    }
+    <div>---------------</div>
+</div>

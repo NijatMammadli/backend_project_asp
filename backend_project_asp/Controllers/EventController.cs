@@ -45,6 +45,7 @@ namespace backend_project_asp.Controllers
         {
             if (id == null)
             {
+
                 return NotFound(); 
             }
 
@@ -62,6 +63,12 @@ namespace backend_project_asp.Controllers
             };
 
             return View(eventViewModel);
+        }
+        public IActionResult Search(string search)
+        {
+            if (search == null) return NotFound();
+            List<Event> model = _dbcontext.Events.Where(p => p.Name.Contains(search) && p.IsDeleted == false).Take(8).OrderByDescending(p => p.Id).ToList();
+            return PartialView("_EventSearchPartial", model);
         }
     }
 }

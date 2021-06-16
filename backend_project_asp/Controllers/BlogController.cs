@@ -62,5 +62,12 @@ namespace backend_project_asp.Controllers
 
             return View(blogViewModel); 
         }
+
+        public IActionResult Search(string search)
+        {
+            if (search == null) return NotFound();
+            List<Blog> model = _dbcontext.Blogs.Where(p => p.Name.Contains(search) && p.IsDeleted == false).Take(8).OrderByDescending(p => p.Id).ToList();
+            return PartialView("_BlogSearchPartial", model);
+        }
     }
 }

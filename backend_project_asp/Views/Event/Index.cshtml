@@ -24,9 +24,21 @@
 
 <!-- Banner Area End -->
 <!-- Event Start -->
-<div class="event-area three text-center pt-150 pb-150">
+<div class="event-area three pt-150 pb-150">
     <div class="container">
         <div class="row">
+            <div class="col-xs-12">
+                <div class="course-title">
+                    <h3>search events</h3>
+                </div>
+                <div class="course-form">
+                    <form id="search" action="#">
+                        <input id="search-Event" type="search" placeholder="Search..." name="search" />
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="Old-Event">
             @if (Events.Count == 0)
             {
                 @await Component.InvokeAsync("Event", new { count = 3, page = ViewBag.Page })
@@ -66,9 +78,10 @@
             }
 
         </div>
+        <div class="row" id="New-Event"></div>
         @if (Events.Count() == 0)
         {
-            <div class="row">
+            <div class="row" id="EventPagination">
                 <ul class="pagination pagination-lg">
                     @for (int i = 1; i <= ViewBag.PageCount; i++)
                     {

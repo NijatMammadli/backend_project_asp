@@ -1,4 +1,5 @@
-﻿using FrontToBack_hw.DataAccessLayer;
+﻿using backend_project_asp.Models;
+using FrontToBack_hw.DataAccessLayer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -39,6 +40,12 @@ namespace backend_project_asp.Controllers
                 return NotFound(); 
             }
             return View(teacherDetail); 
+        }
+        public IActionResult Search(string search)
+        {
+            if (search == null) return NotFound();
+            List<Teacher> model = _dbContext.Teachers.Where(p => p.Name.Contains(search) && p.IsDeleted == false).Include(x => x.socialMedias).Include(x => x.Position).Take(8).OrderByDescending(p => p.Id).ToList();
+            return PartialView("_TeacherSearchPartial", model);
         }
     }
 }

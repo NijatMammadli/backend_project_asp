@@ -1,4 +1,5 @@
 ﻿using backend_project_asp.Models;
+using backend_project_asp.ViewModels;
 using FrontToBack_hw.DataAccessLayer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +25,7 @@ namespace backend_project_asp.Controllers
 
         public IActionResult Index()
         {
-            var homeSliders = _dbContext.HomeSliders.ToList(); 
+            var homeSliders = _dbContext.HomeSliders.ToList();
 
             return View(homeSliders);
         }
@@ -33,16 +34,16 @@ namespace backend_project_asp.Controllers
         {
             if (email == null)
             {
-                return Content("Email cannot be null"); 
+                return Content("Email cannot be null");
             }
             Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             Match match = regex.Match(email);
             if (!match.Success)
             {
-                return Content("Please provide correct email address"); 
+                return Content("Please provide correct email address");
             }
 
-            var isExist = await _dbContext.Subscribes.AnyAsync(x=> x.Email==email);
+            var isExist = await _dbContext.Subscribes.AnyAsync(x => x.Email == email);
             if (isExist)
             {
                 return Content("You have already subscribed");
@@ -53,10 +54,23 @@ namespace backend_project_asp.Controllers
                 Email = email
             };
             await _dbContext.Subscribes.AddAsync(subscribe);
-            await _dbContext.SaveChangesAsync(); 
-                return Content("You have been successfully subscribed");
+            await _dbContext.SaveChangesAsync();
+            return Content("You have been successfully subscribed");
         }
 
-        
+        public async Task<IActionResult> GlobalSearch(string search)
+        {
+            if (search == null) return NotFound();
+            GlobalSearchViewModel globalSearch = new GlobalSearchViewModel
+            {
+                Courses = await _dbContext.Courses.Where(p => p.Name.Contains(search) && p.IsDeleted == false).OrderByDescending(p => p.Id).Take(3).ToListAsync(),
+                Teachers = await _dbContext.Teachers.Where(p => p.Name.Contains(search) && p.IsDeleted == false).OrderByDescending(p => p.Id).Take(3).ToListAsync(),
+                Blogs = await _dbContext.Blogs.Where(p => p.Name.Contains(search) && p.IsDeleted == false).OrderByDescending(p => p.Id).Take(3).ToListAsync(),
+                Events = await _dbContext.Events.Where(p => p.Name.Contains(search) && p.IsDeleted == false).OrderByDescending(p => p.Id).Take(3).ToListAsync(),
+            };
+
+            return PartialView("_GlobalSearchPartial", globalSearch);
+        }
+
     }
 }
