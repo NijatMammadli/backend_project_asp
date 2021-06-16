@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewData["Title"] = "Index";
-    List<UserViewModel> users = Model; 
+    List<UserViewModel> users = Model;
 }
 
 
@@ -19,23 +19,53 @@
                                 <th>Username</th>
                                 <th>Email</th>
                                 <th>Role</th>
+                                <th>IsActive</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var user in users)
                             {
-                                <tr>
-                                    <td>@user.Fullname</td>
-                                    <td>@user.Username</td>
-                                    <td>@user.Email</td>
-                                    <td>@user.Role</td>
-                                    <td>
-                                        <a asp-action="Details" asp-route-id="@user.Id" class="btn btn-success">Detail</a>
-                                        <a asp-action="Update" asp-route-id="@user.Id" class="btn btn-warning">Update</a>
-                                        <a asp-action="Delete" asp-route-id="@user.Id" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>@user.Fullname</td>
+                                <td>@user.Username</td>
+                                <td>@user.Email</td>
+                                <td>@user.Role</td>
+                                @if (user.IsDeactive == true)
+                                {
+                                    <td>Deactive</td>
+
+                                }
+                                else
+                                {
+                                    <td>Active</td>
+
+                                }
+                                <td>@user.Role</td>
+                                <td>
+                                    @if (User.Identity.Name != user.Username)
+                                    {
+
+
+                                        @if (!user.IsDeactive)
+                                        {
+                                            <a asp-action="ChangeRole" asp-route-id="@user.Id" class="btn btn-warning">ChangeRole</a>
+
+                                        }
+                                        @if (user.IsDeactive)
+                                        {
+
+                                            <a asp-action="Activated" asp-route-id="@user.Id" class="btn btn-success">Activated</a>
+                                        }
+                                        else
+                                        {
+                                            <a asp-action="Activated" asp-route-id="@user.Id" class="btn btn-danger">DeActivated</a>
+                                        }
+
+
+                                    }
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
@@ -44,6 +74,7 @@
         </div>
     </div>
 </div>
+
 
 
 

@@ -11,5 +11,7 @@ namespace backend_project_asp.Models
     {
         [Required]
         public string Fullname { get; set; }
+        public bool IsDeactive { get; set; }
+        public ICollection<Course> Courses { get; set; }
     }
 }

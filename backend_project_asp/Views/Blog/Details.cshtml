@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewData["Title"] = "BlogDetails";
-    BlogDetail blogDetail = Model;
+    BlogViewModel blogViewModel = Model;
 }
 
 <!-- Banner Area Start -->
@@ -30,12 +30,12 @@
             <div class="col-md-8">
                 <div class="blog-details">
                     <div class="blog-details-img">
-                        <img src="~/img/blog/@blogDetail.Image" alt="blog-details">
+                        <img src="~/img/blog/@blogViewModel.BlogDetail.Image" alt="blog-details">
                     </div>
                     <div class="blog-details-content">
-                        <h2>@blogDetail.Blog.Name </h2>
-                        <h6>@blogDetail.Blog.Author  / @blogDetail.Blog.Date.ToString("MMMM dd, yyyy") /  <i class="fa fa-comments-o"></i> @blogDetail.Blog.CommentCount</h6>
-                        @Html.Raw(blogDetail.Description)
+                        <h2>@blogViewModel.BlogDetail.Blog.Name </h2>
+                        <h6>@blogViewModel.BlogDetail.Blog.Author  / @blogViewModel.BlogDetail.Blog.Date.ToString("MMMM dd, yyyy") /  <i class="fa fa-comments-o"></i> @blogViewModel.BlogDetail.Blog.CommentCount</h6>
+                        @Html.Raw(blogViewModel.BlogDetail.Description)
                     </div>
                     <div class="reply-area">
                         <h3>LEAVE A REPLY</h3>
@@ -79,12 +79,11 @@
                     <div class="single-blog-widget mb-47">
                         <h3>categories</h3>
                         <ul>
-                            <li><a href="#">CSS Engineering (10)</a></li>
-                            <li><a href="#">Political Science (12)</a></li>
-                            <li><a href="#">Micro Biology (08)</a></li>
-                            <li><a href="#">HTML5 &amp; CSS3 (15)</a></li>
-                            <li><a href="#">Web Design (20)</a></li>
-                            <li><a href="#">PHP (23)</a></li>
+                            @foreach (var item in blogViewModel.Categories)
+                            {
+                                <li><a asp-action="Index" asp-route-categoryId="@item.Id">@item.Name  (@item.BlogCategories.Count) </a></li>
+
+                            }
                         </ul>
                     </div>
                     <div class="single-blog-widget mb-47">

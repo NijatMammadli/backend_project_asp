@@ -1,0 +1,92 @@
+﻿@model ChangeRoleViewModel
+@{
+    ViewData["Title"] = "ChangeRole";
+}
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create Blog</h4>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
+
+
+                    <div class="form-group" >
+                        <label>Roles</label>
+                        <select class="form-control" asp-for="Role" id="RoleInput">
+                            @foreach (var item in Model.Roles)
+                            {
+                                if (Model.Role == item)
+                                {
+                                    <option selected value="@item">@item</option>
+
+                                }
+                                else
+                                {
+                                    <option value="@item">@item</option>
+                                }
+                            }
+
+
+                        </select>
+
+
+                    </div>
+                    <div class="form-group d-none" id="allCourses">
+                        <label>Courses</label>
+                        <select class="form-control" multiple asp-for="CoursesId">
+                            @foreach (var item in ViewBag.Courses)
+                            {
+                                if (Model.Courses.Any(x => x.Id == item.Id))
+                                {
+                                    <option selected value="@item.Id">@item.Name</option>
+
+                                }
+                                else
+                                {
+                                    <option  value="@item.Id">@item.Name</option>
+
+                                }
+                            }
+
+
+                        </select>
+
+
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary mr-2">ChangeRole</button>
+                    <a asp-action="Index" class="btn btn-light">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts 
+{
+    <script>
+        if ($("#RoleInput").val() == "CourseModerator") {
+            console.log("moderator")
+
+            $("#allCourses").removeClass("d-none")
+        }
+        else {
+            $("#allCourses").addClass("d-none")
+
+        }
+        $(document).on("change", "#RoleInput", function () {
+            console.log($("#RoleInput").val())
+            if ($("#RoleInput").val() == "CourseModerator") {
+                console.log("moderator")
+
+                $("#allCourses").removeClass("d-none")
+            }
+            else {
+                $("#allCourses").addClass("d-none")
+
+            }
+        })
+    </script>
+}    

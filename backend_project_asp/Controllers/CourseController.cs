@@ -22,16 +22,17 @@ namespace backend_project_asp.Controllers
 
         public  IActionResult Index(int? categoryId,int page=1)
         {
+            List<Course> courses = new List<Course>();
             if (categoryId == null)
             {
                 ViewBag.PageCount = Decimal.Ceiling(_dbcontext.Courses.Where(x => x.IsDeleted == false).Count() / 3);
                 ViewBag.Page = page;
-                return View();
+                return View(courses);
 
             }
             else
             {
-                List<Course> courses = new List<Course>();
+                
                 IQueryable<CourseCategory> courseCategories = _dbcontext.CourseCategories.Where(x => x.CategoryId == categoryId).Include(x => x.Course);
                 foreach (CourseCategory ct in courseCategories)
                 {
@@ -70,6 +71,11 @@ namespace backend_project_asp.Controllers
 
             return View(courseViewModel); 
         }
-
+        public IActionResult Search(string search)
+        {
+            if (search == null) return NotFound();
+            List<Course> model = _dbcontext.Courses.Where(p => p.Name.Contains(search) && p.IsDeleted == false).Take(8).OrderByDescending(p => p.Id).ToList();
+            return PartialView("_CourseSearchPartial", model);
+        }
     }
 }

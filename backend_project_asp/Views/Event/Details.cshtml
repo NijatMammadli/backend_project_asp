@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewData["Title"] = "EventDetails";
-    EventDetail eventDetail = Model;
+    EventViewModel eventViewModel = Model;
 }
 
 <!-- Banner Area Start -->
@@ -30,21 +30,21 @@
             <div class="col-md-8">
                 <div class="event-details">
                     <div class="event-details-img">
-                        <img src="~/img/event/@eventDetail.Event.Image" alt="event-details">
+                        <img src="~/img/event/@eventViewModel.EventDetail.Event.Image" alt="event-details">
                         <div class="event-date">
-                            <h3>@eventDetail.Event.Day.ToString("dd") <span>@eventDetail.Event.Day.ToString("MMMM")</span></h3>
+                            <h3>@eventViewModel.EventDetail.Event.Day.ToString("dd") <span>@eventViewModel.EventDetail.Event.Day.ToString("MMMM")</span></h3>
                         </div>
                     </div>
                     <div class="event-details-content">
-                        <h2>@eventDetail.Event.Name</h2>
+                        <h2>@eventViewModel.EventDetail.Event.Name</h2>
                         <ul>
-                            <li><span>time : </span>@eventDetail.Event.StartTime.ToString("hh:mm tt") - @eventDetail.Event.EndTime.ToString("hh:mm tt")</li>
-                            <li><span>venue : </span>@eventDetail.DetailedVenue</li>
+                            <li><span>time : </span>@eventViewModel.EventDetail.Event.StartTime.ToString("hh:mm tt") - @eventViewModel.EventDetail.Event.EndTime.ToString("hh:mm tt")</li>
+                            <li><span>venue : </span>@eventViewModel.EventDetail.DetailedVenue</li>
                         </ul>
-                        @Html.Raw(eventDetail.Description)
+                        @Html.Raw(eventViewModel.EventDetail.Description)
                         <div class="speakers-area fix">
                             <h4>speakers</h4>
-                            @foreach (var item in eventDetail.Event.EventSpeakers)
+                            @foreach (var item in eventViewModel.EventDetail.Event.EventSpeakers)
                             {
 
                                 <div class="single-speaker">
@@ -102,12 +102,11 @@
                     <div class="single-blog-widget mb-50">
                         <h3>categories</h3>
                         <ul>
-                            <li><a href="#">CSS Engineering (10)</a></li>
-                            <li><a href="#">Political Science (12)</a></li>
-                            <li><a href="#">Micro Biology (08)</a></li>
-                            <li><a href="#">HTML5 &amp; CSS3 (15)</a></li>
-                            <li><a href="#">Web Design (20)</a></li>
-                            <li><a href="#">PHP (23)</a></li>
+                            @foreach (var item in eventViewModel.Categories)
+                            {
+                                <li><a asp-action="Index" asp-route-categoryId="@item.Id">@item.Name  (@item.EventCategories.Count) </a></li>
+
+                            }
                         </ul>
                     </div>
                     <div class="single-blog-widget mb-50">

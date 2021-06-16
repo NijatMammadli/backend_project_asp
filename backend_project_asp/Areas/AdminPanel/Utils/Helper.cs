@@ -32,5 +32,6 @@ namespace backend_project_asp.Areas.AdminPanel.Utils
                 throw;
             }
         }
+      
     }
 }

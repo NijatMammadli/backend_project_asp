@@ -1,0 +1,97 @@
+﻿@model Course
+@{
+    ViewData["Title"] = "Update";
+}
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Update product</h4>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="Name">Name</label>
+                        <input asp-for="Name" class="form-control" placeholder="Name">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description">Description</label>
+                        <textarea asp-for="Description" class="form-control" placeholder="Description" row="3"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="CourseDetail.CourseFee"></label>
+                        <input asp-for="CourseDetail.CourseFee" class="form-control">
+                        <span asp-validation-for="CourseDetail.CourseFee" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CourseDetail.AboutCourse"></label>
+                        <input asp-for="CourseDetail.AboutCourse" class="form-control">
+                        <span asp-validation-for="CourseDetail.AboutCourse" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CourseDetail.Certification"></label>
+                        <input asp-for="CourseDetail.Certification" class="form-control">
+                        <span asp-validation-for="CourseDetail.Certification" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CourseDetail.HowToApply"></label>
+                        <input asp-for="CourseDetail.HowToApply" class="form-control">
+                        <span asp-validation-for="CourseDetail.HowToApply" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CourseDetail.Students"></label>
+                        <input asp-for="CourseDetail.Students" class="form-control">
+                        <span asp-validation-for="CourseDetail.Students" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CourseDetail.Starts"></label>
+                        <input asp-for="CourseDetail.Starts" class="form-control">
+                        <span asp-validation-for="CourseDetail.Starts" class="text-danger"></span>
+                    </div>
+
+
+
+
+
+
+                    <div class="form-group " id="photoInput">
+                        <label asp-for="Photo">Images</label>
+                        <input asp-for="Photo" class="form-control" accept="image/*" />
+                        <span asp-validation-for="Photo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" id="CategoryInput">
+                        <label>category</label>
+                        <select multiple class="form-control" name="categoryId" id="Category">
+
+                            @foreach (Category item in ViewBag.categories)
+                            {
+                                if (Model.CourseCategories.Any(x => x.CategoryId == item.Id))
+                                {
+
+                                    <option selected value="@item.Id">@item.Name</option>
+
+                                }
+                                else
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+
+                                }
+
+                            }
+                        </select>
+                    </div>
+
+
+
+                    <button type="submit" class="btn btn-primary mr-2">Update</button>
+                    <a asp-action="Index" class="btn btn-light">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

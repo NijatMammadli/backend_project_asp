@@ -1,4 +1,6 @@
-﻿using FrontToBack_hw.DataAccessLayer;
+﻿using backend_project_asp.Models;
+using backend_project_asp.ViewModels;
+using FrontToBack_hw.DataAccessLayer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -16,12 +18,27 @@ namespace backend_project_asp.Controllers
         {
             _dbcontext = dbcontext;
         }
-        public async Task<IActionResult> Index(int page=1)
+        public IActionResult Index(int? categoryId, int page=1)
         {
-            ViewBag.PageCount = Decimal.Ceiling(_dbcontext.Events.Where(x=> x.IsDeleted==false).Count()/3);
-            ViewBag.Page = page;
-            
-            return View();
+            List<Event> events = new List<Event>();
+            if (categoryId == null)
+            {
+                ViewBag.PageCount = Decimal.Ceiling(_dbcontext.Events.Where(x => x.IsDeleted == false).Count() / 3);
+                ViewBag.Page = page;
+
+                return View(events);
+            }
+            else
+            {
+
+                IQueryable<EventCategory> eventCategories = _dbcontext.EventCategories.Where(x => x.CategoryId == categoryId).Include(x => x.Event);
+                foreach (EventCategory ct in eventCategories)
+                {
+                    events.Add(ct.Event);
+                }
+                return View(events);
+            }
+                
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -36,7 +53,15 @@ namespace backend_project_asp.Controllers
             {
                 return NotFound(); 
             }
-            return View(eventDetail);
+            var categories = await _dbcontext.Categories.Include(x => x.EventCategories).ToListAsync();
+
+            var eventViewModel = new EventViewModel
+            {
+                EventDetail = eventDetail,
+                Categories = categories
+            };
+
+            return View(eventViewModel);
         }
     }
 }

@@ -4,14 +4,16 @@ using FrontToBack_hw.DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace backend_project_asp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210616104257_UserDeActive")]
+    partial class UserDeActive
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -287,12 +289,7 @@ namespace backend_project_asp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Courses");
                 });
@@ -899,15 +896,6 @@ namespace backend_project_asp.Migrations
                     b.Navigation("Blog");
                 });
 
-            modelBuilder.Entity("backend_project_asp.Models.Course", b =>
-                {
-                    b.HasOne("backend_project_asp.Models.User", "User")
-                        .WithMany("Courses")
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("backend_project_asp.Models.CourseCategory", b =>
                 {
                     b.HasOne("backend_project_asp.Models.Category", "Category")
@@ -1067,11 +1055,6 @@ namespace backend_project_asp.Migrations
                     b.Navigation("socialMedias");
 
                     b.Navigation("TecaherDetail");
-                });
-
-            modelBuilder.Entity("backend_project_asp.Models.User", b =>
-                {
-                    b.Navigation("Courses");
                 });
 #pragma warning restore 612, 618
         }

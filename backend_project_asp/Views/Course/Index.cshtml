@@ -33,14 +33,13 @@
                 </div>
                 <div class="course-form">
                     <form id="search" action="#">
-                        <input type="search" placeholder="Search..." name="search" />
-                        <button type="submit">search</button>
+                        <input id="search-Course" type="search" placeholder="Search..." name="search" />
                     </form>
                 </div>
             </div>
         </div>
-        <div class="row">
-            @if (courses.Count() == 0)
+        <div class="row" id="Old-Course">
+            @if (courses.Count == 0)
             {
                 @await Component.InvokeAsync("Course", new { count = 3, page = ViewBag.Page })
 
@@ -70,6 +69,9 @@
                 }
 
             }
+
+        </div>
+        <div class="row" id="New-Course">
 
         </div>
         @if (courses.Count() == 0)

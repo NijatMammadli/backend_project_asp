@@ -20,5 +20,6 @@ namespace backend_project_asp.ViewModels
         public string Email { get; set; }
 
         public string Role { get; set; }
+        public bool IsDeactive { get; set; }
     }
 }
