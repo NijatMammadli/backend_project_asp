@@ -1,0 +1,31 @@
+﻿@model Speaker
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="col-md-8">
+    <div class="courses-details">
+        <div class="speaker-details-img">
+            <img src="~/img/event/@Model.Image" alt="speaker-details">
+        </div>
+        <div class="speaker-details-content">
+            <h2>@Model.Name</h2>
+            <p>@Model.Company</p>
+            <div class="course-details-left">
+                <div class="single-course-left">
+                    <h3>Position</h3>
+                    <p>@Model.Position</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row">
+    <a asp-action="Index" class="btn btn-primary">Go Back</a>
+    <form method="post">
+        <button type="submit" class="btn btn-danger mr-2">Delete</button>
+    </form>
+</div>

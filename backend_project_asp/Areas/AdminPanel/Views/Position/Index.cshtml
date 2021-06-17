@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    List<Position> positions = Model;
+}
+
+
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Categories</h4>
+                <a asp-controller="Position" asp-action="Create"> Create Position</a>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+
+                                <th>Name</th>
+
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var position in positions)
+                            {
+                                <tr>
+
+                                    <td>@position.PositionName</td>
+
+                                    <td>
+                                        <a asp-action="Details" asp-route-id="@position.Id" class="btn btn-success">Detail</a>
+                                        <a asp-action="Update" asp-route-id="@position.Id" class="btn btn-warning">Update</a>
+                                        <a asp-action="Delete" asp-route-id="@position.Id" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

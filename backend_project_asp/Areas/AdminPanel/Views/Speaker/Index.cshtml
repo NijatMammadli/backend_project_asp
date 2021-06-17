@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    List<Speaker> speakers = Model;
+}
+
+
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Speakers</h4>
+                <a asp-controller="Speaker" asp-action="Create"> Create Speaker</a>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Company</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var speaker in speakers)
+                            {
+                                <tr>
+                                    <td><img width="150" height="150" src="~/img/event/@speaker.Image" /></td>
+                                    <td>@speaker.Name</td>
+                                    <td>@speaker.Position</td>
+                                    <td>@speaker.Company</td>
+                                    <td>
+                                        <a asp-action="Details" asp-route-id="@speaker.Id" class="btn btn-success">Detail</a>
+                                        <a asp-action="Update" asp-route-id="@speaker.Id" class="btn btn-warning">Update</a>
+                                        <a asp-action="Delete" asp-route-id="@speaker.Id" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

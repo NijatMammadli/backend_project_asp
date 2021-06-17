@@ -1,0 +1,71 @@
+﻿@model SocialMedia
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create Link</h4>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="Icon"></label>
+                        <input asp-for="Icon" class="form-control">
+                        <span asp-validation-for="Icon" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Link"></label>
+                        <input asp-for="Link" class="form-control">
+                        <span asp-validation-for="Link" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Teachers</label>
+                        <select multiple class="form-control" name="teacherId">
+
+                            @foreach (var item in ViewBag.teachers)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mr-2">Create</button>
+                    <a asp-action="Index" class="btn btn-light">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                @foreach (var item in ViewBag.allSocialMedias)
+                {
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="col-5">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="col-4 myIcon">
+                                    @Html.Raw(item.Icon)
+                                </div>
+
+                                <div class="col-8">
+                                    @item.IconName :
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-7">
+                            @item.Icon
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+
+</div>
+

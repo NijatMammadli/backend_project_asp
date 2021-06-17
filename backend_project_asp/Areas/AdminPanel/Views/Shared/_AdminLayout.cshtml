@@ -170,12 +170,12 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="~/admin/index.html">
+                        <a class="nav-link" asp-controller="Dashboard">
                             <i class="mdi mdi-home menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    @*<li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                             <i class="mdi mdi-circle-outline menu-icon"></i>
                             <span class="menu-title">UI Elements</span>
@@ -187,29 +187,73 @@
                                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
                             </ul>
                         </div>
-                    </li>
+                    </li>*@
+
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/forms/basic_elements.html">
+                        <a class="nav-link" asp-area="AdminPanel" asp-controller="Course" asp-action="Index">
+
                             <i class="mdi mdi-view-headline menu-icon"></i>
-                            <span class="menu-title">Form elements</span>
+                            <span class="menu-title">Courses</span>
                         </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/charts/chartjs.html">
+                        <a class="nav-link" asp-area="AdminPanel" asp-controller="CourseModerator" asp-action="Index">
+
+                            <i class="mdi mdi-view-headline menu-icon"></i>
+                            <span class="menu-title">CourseModerator</span>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="AdminPanel" asp-controller="Blog" asp-action="Index">
+
+                            <i class="mdi mdi-view-headline menu-icon"></i>
+                            <span class="menu-title">Blogs</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="AdminPanel" asp-controller="Event" asp-action="Index">
+
+                            <i class="mdi mdi-view-headline menu-icon"></i>
+                            <span class="menu-title">Events</span>
+                        </a>
+                    </li>
+
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="AdminPanel" asp-controller="Category" asp-action="Index">
+
                             <i class="mdi mdi-chart-pie menu-icon"></i>
-                            <span class="menu-title">Charts</span>
+                            <span class="menu-title">Categories</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/tables/basic-table.html">
+                        <a class="nav-link" asp-area="AdminPanel" asp-controller="Position" asp-action="Index">
+
                             <i class="mdi mdi-grid-large menu-icon"></i>
-                            <span class="menu-title">Tables</span>
+                            <span class="menu-title">Position</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/icons/mdi.html">
+                        <a class="nav-link" asp-area="AdminPanel" asp-controller="Speaker" asp-action="Index">
                             <i class="mdi mdi-emoticon menu-icon"></i>
-                            <span class="menu-title">Icons</span>
+                            <span class="menu-title">Speaker</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="AdminPanel" asp-controller="Teacher" asp-action="Index">
+                            <i class="mdi mdi-emoticon menu-icon"></i>
+                            <span class="menu-title">Teachers</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="AdminPanel" asp-controller="SocialMedia" asp-action="Index">
+                            <i class="mdi mdi-emoticon menu-icon"></i>
+                            <span class="menu-title">SocialMedias</span>
                         </a>
                     </li>
                     <li class="nav-item">

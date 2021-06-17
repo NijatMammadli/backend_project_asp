@@ -1,0 +1,29 @@
+﻿@model SocialMedia
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Link Details</h4>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div>
+                    <p>@ViewBag.teacher.Name</p>
+                    <p>@Model.Icon</p>
+                    <p>@Model.Link</p>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <a asp-action="Index" class="btn btn-primary">Go Back</a>
+
+</div>

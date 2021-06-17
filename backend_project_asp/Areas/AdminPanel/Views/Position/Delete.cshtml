@@ -1,0 +1,29 @@
+﻿@model Position
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="col-md-8">
+    <div class="courses-details">
+
+        <div class="speaker-details-content">
+            <h2>@Model.PositionName</h2>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <a asp-action="Index" class="btn btn-primary">Go Back</a>
+    <form method="post">
+        <button type="submit" class="btn btn-danger mr-2">Delete</button>
+    </form>
+</div>
+
+
+
+
+

@@ -34,7 +34,7 @@ namespace backend_project_asp.Areas.AdminPanel.Controllers
             return View();
         }
         [HttpPost]
-        [AutoValidateAntiforgeryToken]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(SocialMedia  socialMedia,int? teacherId)
         {
             var teachers = await _dbContext.Teachers.ToListAsync();
@@ -43,7 +43,125 @@ namespace backend_project_asp.Areas.AdminPanel.Controllers
             ViewBag.allSocialMedias = allSocialMedias;
 
             socialMedia.TeacherId = (int)teacherId;
-            return View();
+
+            await _dbContext.SocialMedias.AddAsync(socialMedia);
+            await _dbContext.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
+
+        public async Task<IActionResult> Update(int? id)
+        {
+            var teachers = await _dbContext.Teachers.ToListAsync();
+            var allSocialMedias = await _dbContext.AllSocialMedias.ToListAsync();
+            ViewBag.teachers = teachers;
+            ViewBag.allSocialMedias = allSocialMedias;
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var socialMediaExist = await _dbContext.SocialMedias.Where(x => x.Id == id).FirstOrDefaultAsync();
+
+            if (socialMediaExist == null)
+            {
+                return NotFound();
+            }
+
+
+            return View(socialMediaExist);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(int? id, SocialMedia socialMedia, int? teacherId)
+        {
+            var teachers = await _dbContext.Teachers.ToListAsync();
+            var allSocialMedias = await _dbContext.AllSocialMedias.ToListAsync();
+            ViewBag.teachers = teachers;
+            ViewBag.allSocialMedias = allSocialMedias;
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+            socialMedia.TeacherId = (int)teacherId;
+            
+            var socialMediaExist = await _dbContext.SocialMedias.Where(x => x.Id == id).FirstOrDefaultAsync();
+
+            if (socialMediaExist == null)
+            {
+                return NotFound();
+            }
+
+            socialMediaExist.Icon = socialMedia.Icon;
+            socialMediaExist.Link = socialMedia.Link;
+            socialMediaExist.Teacher = socialMedia.Teacher;
+            socialMediaExist.TeacherId = socialMedia.TeacherId;
+
+            await _dbContext.SaveChangesAsync();
+
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+        
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var socialMediaExist = await _dbContext.SocialMedias.Where(x => x.Id == id).FirstOrDefaultAsync();
+            
+            var teacher = await _dbContext.Teachers.Where(x => x.Id ==socialMediaExist.TeacherId).FirstOrDefaultAsync();
+            ViewBag.teacher = teacher; 
+            return View(socialMediaExist);
+
+        }
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var socialMediaExist = await _dbContext.SocialMedias.Where(x => x.Id == id).FirstOrDefaultAsync();
+
+            var teacher = await _dbContext.Teachers.Where(x => x.Id == socialMediaExist.TeacherId).FirstOrDefaultAsync();
+            ViewBag.teacher = teacher;
+            return View(socialMediaExist);
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("Delete")]
+        public async Task<IActionResult> DeleteLink(int? id)
+        {
+
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var socialMediaExist = await _dbContext.SocialMedias.Where(x => x.Id == id).FirstOrDefaultAsync();
+
+            var teacher = await _dbContext.Teachers.Where(x => x.Id == socialMediaExist.TeacherId).FirstOrDefaultAsync();
+            ViewBag.teacher = teacher;
+
+            socialMediaExist.IsDeleted = true;
+
+            await _dbContext.SaveChangesAsync(); 
+
+            return RedirectToAction("Index");
+
         }
     }
 }
