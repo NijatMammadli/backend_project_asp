@@ -66,7 +66,7 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="logo">
-                            <a href="~/index.html"><img src="~/img/logo/logo2.png" alt="eduhome" /></a>
+                            <a asp-controller="Home" asp-action="Index"><img src="~/img/logo/logo2.png" alt="eduhome" /></a>
                         </div>
                     </div>
                     <div class="col-md-9 col-sm-9 col-xs-6">
@@ -96,7 +96,7 @@
                                             <a asp-controller="Blog" asp-action="Index">blog</a>
 
                                         </li>
-                                        <li><a href="~/contact.html">Contact</a></li>
+                                        <li><a href="#">Contact</a></li>
                                         <li><a href="~/#">Buy Now</a>
                                     </ul>
                                 </nav>
@@ -200,11 +200,11 @@
                         <div class="single-widget">
                             <h3>useful links</h3>
                             <ul>
-                                <li><a href="~/course.html">our courses</a></li>
-                                <li><a href="~/about.html">about us</a></li>
-                                <li><a href="~/teacher.html">teachers &amp; faculty</a></li>
+                                <li><a asp-controller="Course" asp-action="Index" >our courses</a></li>
+                                <li><a asp-controller="About" asp-action="Index" >about us</a></li>
+                                <li><a asp-controller="Teacher" asp-action="Index">teachers &amp; faculty</a></li>
                                 <li><a href="~/#">teams &amp; conditions</a></li>
-                                <li><a href="~/event.html">our events</a></li>
+                                <li><a asp-controller="Event" asp-action="Index">our events</a></li>
                             </ul>
                         </div>
                     </div>
