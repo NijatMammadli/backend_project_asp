@@ -1,0 +1,119 @@
+﻿@model Teacher
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create Teacher</h4>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="Name">Name</label>
+                        <input asp-for="Name" class="form-control" placeholder="Name">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TecaherDetail.AboutMe"></label>
+                        <input asp-for="TecaherDetail.AboutMe" class="form-control">
+                        <span asp-validation-for="TecaherDetail.AboutMe" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TecaherDetail.Communication"></label>
+                        <input asp-for="TecaherDetail.Communication" class="form-control">
+                        <span asp-validation-for="TecaherDetail.Communication" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TecaherDetail.Degree"></label>
+                        <input asp-for="TecaherDetail.Degree" class="form-control">
+                        <span asp-validation-for="TecaherDetail.Degree" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="TecaherDetail.Design"></label>
+                        <input asp-for="TecaherDetail.Design" class="form-control">
+                        <span asp-validation-for="TecaherDetail.Design" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TecaherDetail.Development"></label>
+                        <input asp-for="TecaherDetail.Development" class="form-control">
+                        <span asp-validation-for="TecaherDetail.Development" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="TecaherDetail.Experience"></label>
+                        <input asp-for="TecaherDetail.Experience" class="form-control">
+                        <span asp-validation-for="TecaherDetail.Experience" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TecaherDetail.Faculty"></label>
+                        <input asp-for="TecaherDetail.Faculty" class="form-control">
+                        <span asp-validation-for="TecaherDetail.Faculty" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TecaherDetail.Hobbies"></label>
+                        <input asp-for="TecaherDetail.Hobbies" class="form-control">
+                        <span asp-validation-for="TecaherDetail.Hobbies" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="TecaherDetail.Innovation"></label>
+                        <input asp-for="TecaherDetail.Innovation" class="form-control">
+                        <span asp-validation-for="TecaherDetail.Innovation" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="TecaherDetail.Language"></label>
+                        <input asp-for="TecaherDetail.Language" class="form-control">
+                        <span asp-validation-for="TecaherDetail.Language" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="TecaherDetail.Mail"></label>
+                        <input asp-for="TecaherDetail.Mail" class="form-control">
+                        <span asp-validation-for="TecaherDetail.Mail" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="TecaherDetail.Phone"></label>
+                        <input asp-for="TecaherDetail.Phone" class="form-control">
+                        <span asp-validation-for="TecaherDetail.Phone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TecaherDetail.Skype"></label>
+                        <input asp-for="TecaherDetail.Skype" class="form-control">
+                        <span asp-validation-for="TecaherDetail.Skype" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TecaherDetail.TeamLeader"></label>
+                        <input asp-for="TecaherDetail.TeamLeader" class="form-control">
+                        <span asp-validation-for="TecaherDetail.TeamLeader" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="form-group " id="photoInput">
+                        <label asp-for="Photo">Images</label>
+                        <input asp-for="Photo" class="form-control" accept="image/*" />
+                        <span asp-validation-for="Photo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>category</label>
+                        <select multiple class="form-control" name="positionId" id="Category">
+
+                            @foreach (Position item in ViewBag.positions)
+                            {
+                                <option value="@item.Id">@item.PositionName</option>
+                            }
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mr-2">Create</button>
+                    <a asp-action="Index" class="btn btn-light">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

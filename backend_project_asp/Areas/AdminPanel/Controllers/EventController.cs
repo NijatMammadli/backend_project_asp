@@ -117,9 +117,207 @@ namespace backend_project_asp.Areas.AdminPanel.Controllers
             Event.EventCategories = EventCategories;
             await _dbContext.Events.AddAsync(Event);
             await _dbContext.SaveChangesAsync();
+            //           Subscribe
+            await SubscribeEmailAsync(Event.Id);
             return RedirectToAction("Index");
         }
+        public async Task SubscribeEmailAsync(int? eventId)
+        {
+            List<Subscribe> subscribes = _dbContext.Subscribes.ToList();
+            string msgsubject = "New event is planned";
+            string url = "https://localhost:44342/Event/Details/" + eventId;
+            string message = $"<a href={url}>link to new event, please click to view details</a>";
+            foreach (var subscriber in subscribes)
+            {
+                await Helper.SendMessage(msgsubject, message, subscriber.Email);
+            }
+        }
 
+
+        public IActionResult Update(int? id)
+        {
+            var categories = _dbContext.Categories.ToList();
+            var speakers = _dbContext.Speakers.Where(x => x.IsDeleted == false).ToList();
+            ViewBag.categories = categories;
+            ViewBag.Spikers = speakers;
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var isExistEvent = _dbContext.Events.Where(x => x.IsDeleted == false).Include(x=>x.EventDetail).Include(x=>x.EventCategories).Include(x=>x.EventSpeakers).FirstOrDefault(x => x.Id == id);
+            if (isExistEvent == null)
+            {
+                return NotFound(); 
+            }
+           
+            return View(isExistEvent);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(int? id, Event Event, List<int?> categoryId, List<int?> speakerId)
+        {
+            var categories = _dbContext.Categories.ToList();
+            var speakers = _dbContext.Speakers.Where(x => x.IsDeleted == false).ToList();
+            ViewBag.categories = categories;
+            ViewBag.Spikers = speakers;
+            if (id == null)
+            {
+                return BadRequest();
+            }
+
+            var eventExist = _dbContext.Events.Include(x => x.EventDetail).Include(x => x.EventCategories).Include(x=>x.EventSpeakers).FirstOrDefault(x => x.Id == id);
+            if (eventExist == null)
+            {
+                return BadRequest();
+            }
+
+           
+          
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            if (id != Event.Id)
+            {
+                return BadRequest();
+            }
+
+
+
+
+            if (Event.Photo != null)
+            {
+                if (!Event.Photo.IsImage())
+                {
+                    ModelState.AddModelError("Photo", "Select photo.");
+                    return View();
+                }
+
+                if (!Event.Photo.IsSizeAllowed(1024))
+                {
+                    ModelState.AddModelError("Photo", "Max size is 1024 kb.");
+                    return View();
+                }
+
+                Event.Image = await FileUtil.GenerateFileAsync(Path.Combine(Constants.ImageFolderPath, "event"), Event.Photo);
+
+            }
+
+
+
+            List<EventCategory> eventCategories = new List<EventCategory>();
+            List<EventSpeaker> eventSpeakers = new List<EventSpeaker>();
+
+            foreach (var ctId in categoryId)
+            {
+                var eventCategory = new EventCategory
+                {
+                    CategoryId = (int)ctId
+                };
+
+                eventCategories.Add(eventCategory);
+            }
+
+            foreach (var spId in speakerId)
+            {
+                var eventSpeaker = new EventSpeaker
+                {
+                    SpeakerId = (int)spId
+                };
+
+                eventSpeakers.Add(eventSpeaker);
+            }
+
+
+            eventExist.EventCategories = eventCategories;
+            eventExist.EventSpeakers = eventSpeakers;
+            eventExist.Name = Event.Name;
+            eventExist.StartTime = Event.StartTime;
+            eventExist.EndTime = Event.EndTime;
+            eventExist.Venue = Event.Venue;
+            eventExist.EventDetail.Description = Event.EventDetail.Description;
+            eventExist.EventDetail.DetailedVenue = Event.EventDetail.DetailedVenue;
+
+            await _dbContext.SaveChangesAsync();
+            return RedirectToAction("Index");
+
+
+        }
+
+        public IActionResult Details(int? id)
+        {
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var eventExist = _dbContext.Events.Include(x => x.EventDetail).Include(x => x.EventCategories).Include(x => x.EventSpeakers).FirstOrDefault(x => x.Id == id);
+            if (eventExist == null)
+            {
+                return NotFound();
+            }
+            var categories = _dbContext.Categories.ToList();
+            var speakers = _dbContext.Speakers.Where(x => x.IsDeleted == false).ToList();
+            ViewBag.categories = categories;
+            ViewBag.Spikers = speakers;
+
+            return View(eventExist);
+        }
+
+        public IActionResult Delete(int? id)
+        {
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var eventExist = _dbContext.Events.Include(x => x.EventDetail).Include(x => x.EventCategories).Include(x=>x.EventSpeakers).FirstOrDefault(x => x.Id == id);
+            if (eventExist == null)
+            {
+                return NotFound();
+            }
+            var categories = _dbContext.Categories.ToList();
+            var speakers = _dbContext.Speakers.Where(x => x.IsDeleted == false).ToList();
+            ViewBag.categories = categories;
+            ViewBag.Spikers = speakers;
+
+            return View(eventExist);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("Delete")]
+        public IActionResult DeleteEvent(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var eventExist = _dbContext.Events.Include(x => x.EventDetail).Include(x => x.EventCategories).Include(x => x.EventSpeakers).FirstOrDefault(x => x.Id == id);
+
+
+            var categories = _dbContext.Categories.ToList();
+            var speakers = _dbContext.Speakers.Where(x => x.IsDeleted == false).ToList();
+            ViewBag.categories = categories;
+            ViewBag.Spikers = speakers;
+
+            if (eventExist == null)
+            {
+                return NotFound();
+            }
+            eventExist.IsDeleted = true;
+            eventExist.EventDetail.IsDeleted = true;
+
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
     }
 }

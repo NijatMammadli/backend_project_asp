@@ -30,16 +30,6 @@ namespace backend_project_asp.Areas.AdminPanel.Controllers
         }
 
 
-        //public async Task SubscribeEmailAsync(int? eventId)
-        //{
-        //    List<Subscribe> subscribes = _dbContext.Subscribes.ToList();
-        //    string msgsubject = "New event is planned";
-        //    string url = "https://localhost:44342/Event/Details/" + eventId;
-        //    string message = $"<a href={url}>link to new event, please click to view details</a>";
-        //    foreach (var subscriber in subscribes)
-        //    {
-        //        await Helper.SendMessage(msgsubject, message, subscriber.Email);
-        //    }
-        //}
+       
     }
 }

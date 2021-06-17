@@ -8,7 +8,7 @@
     <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="single-blog mb-60">
             <div class="blog-img">
-                <a asp-action="Details" asp-route-id="@blog.Id"><img src="img/blog/@blog.Image" alt="blog"></a>
+                <a asp-controller="Blog" asp-action="Details" asp-route-id="@blog.Id"><img src="img/blog/@blog.Image" alt="blog"></a>
                 <div class="blog-hover">
                     <i class="fa fa-link"></i>
                 </div>
@@ -18,8 +18,8 @@
                     <p>@blog.Author  /  @blog.Date.ToString("MMMM dd, yyyy")  /  <i class="fa fa-comments-o"></i> @blog.CommentCount</p>
                 </div>
                 <div class="blog-bottom">
-                    <h2><a asp-action="Details" asp-route-id="@blog.Id">@blog.Name </a></h2>
-                    <a asp-action="Details" asp-route-id="@blog.Id">read more</a>
+                    <h2><a asp-controller="Blog" asp-action="Details" asp-route-id="@blog.Id">@blog.Name </a></h2>
+                    <a asp-controller="Blog" asp-action="Details" asp-route-id="@blog.Id">read more</a>
                 </div>
             </div>
         </div>

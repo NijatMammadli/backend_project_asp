@@ -41,7 +41,11 @@ namespace backend_project_asp.Areas.AdminPanel.Controllers
             var allSocialMedias = await _dbContext.AllSocialMedias.ToListAsync();
             ViewBag.teachers = teachers;
             ViewBag.allSocialMedias = allSocialMedias;
-
+            if (teacherId == null)
+            {
+                ModelState.AddModelError("", "Select photo.");
+                return View();
+            }
             socialMedia.TeacherId = (int)teacherId;
 
             await _dbContext.SocialMedias.AddAsync(socialMedia);
@@ -62,7 +66,7 @@ namespace backend_project_asp.Areas.AdminPanel.Controllers
                 return NotFound();
             }
 
-            var socialMediaExist = await _dbContext.SocialMedias.Where(x => x.Id == id).FirstOrDefaultAsync();
+            var socialMediaExist = await _dbContext.SocialMedias.FirstOrDefaultAsync(x => x.Id == id);
 
             if (socialMediaExist == null)
             {
@@ -86,10 +90,13 @@ namespace backend_project_asp.Areas.AdminPanel.Controllers
             {
                 return NotFound();
             }
-            socialMedia.TeacherId = (int)teacherId;
             
-            var socialMediaExist = await _dbContext.SocialMedias.Where(x => x.Id == id).FirstOrDefaultAsync();
-
+            var socialMediaExist = await _dbContext.SocialMedias.FirstOrDefaultAsync(x => x.Id == id);
+            if (teacherId == null)
+            {
+                ModelState.AddModelError("", "Select photo.");
+                return View();
+            }
             if (socialMediaExist == null)
             {
                 return NotFound();
@@ -97,8 +104,7 @@ namespace backend_project_asp.Areas.AdminPanel.Controllers
 
             socialMediaExist.Icon = socialMedia.Icon;
             socialMediaExist.Link = socialMedia.Link;
-            socialMediaExist.Teacher = socialMedia.Teacher;
-            socialMediaExist.TeacherId = socialMedia.TeacherId;
+            socialMediaExist.TeacherId = (int)teacherId;
 
             await _dbContext.SaveChangesAsync();
 

@@ -215,3 +215,11 @@ C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj
 C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Position\Update.cshtml.g.cs
 C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Position\Details.cshtml.g.cs
 C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Position\Delete.cshtml.g.cs
+C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Event\Update.cshtml.g.cs
+C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Event\Delete.cshtml.g.cs
+C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Event\Details.cshtml.g.cs
+C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Teacher\Index.cshtml.g.cs
+C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Teacher\Create.cshtml.g.cs
+C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Teacher\Update.cshtml.g.cs
+C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Teacher\Details.cshtml.g.cs
+C:\Users\Nijat Mammadli\source\repos\backend_project_asp\backend_project_asp\obj\Debug\net5.0\Razor\Areas\AdminPanel\Views\Teacher\Delete.cshtml.g.cs
